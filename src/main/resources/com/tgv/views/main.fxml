@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+
+<!--
+    main.fxml — Layout principal TGV Delivery
+    Sidebar gauche (pleine hauteur) + Top bar + Zone de contenu dynamique
+-->
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.tgv.controllers.MainController"
+            stylesheets="@../css/style.css">
+
+    <!-- ══════════════════════════════════════════
+         SIDEBAR — pleine hauteur à gauche
+         ══════════════════════════════════════════ -->
+    <left>
+        <VBox fx:id="sidebar" styleClass="sidebar" prefWidth="70" minWidth="70" maxWidth="70" onMouseEntered="#onSidebarEntered" onMouseExited="#onSidebarExited">
+
+            <!-- Logo (Cliquable) -->
+            <VBox styleClass="sidebar-logo-area" alignment="CENTER_LEFT" onMouseClicked="#openFrontOffice" style="-fx-cursor: hand; -fx-padding: 10 20;">
+                <ImageView fx:id="logoImage" fitWidth="180" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo.png"/>
+                    </image>
+                </ImageView>
+            </VBox>
+
+            <Region prefHeight="10"/>
+
+            <!-- ─── NAVIGATION (Plate) ─── -->
+            <Button fx:id="btnCommandes" text="Commandes" styleClass="nav-btn" maxWidth="Infinity" onAction="#showCommandes">
+                <graphic><Region styleClass="nav-icon, icon-commandes"/></graphic>
+            </Button>
+            
+            <Button fx:id="btnProduits" text="Produits" styleClass="nav-btn" maxWidth="Infinity" onAction="#showProduits">
+                <graphic><Region styleClass="nav-icon, icon-produits"/></graphic>
+            </Button>
+            
+            <Button fx:id="btnLivreurs" text="Livreurs" styleClass="nav-btn" maxWidth="Infinity" onAction="#showLivreurs">
+                <graphic><Region styleClass="nav-icon, icon-livreurs"/></graphic>
+            </Button>
+            
+            <Button fx:id="btnServices" text="Services" styleClass="nav-btn" maxWidth="Infinity" onAction="#showServices">
+                <graphic><Region styleClass="nav-icon, icon-services"/></graphic>
+            </Button>
+            
+            <Button fx:id="btnReclamations" text="Réclamations" styleClass="nav-btn" maxWidth="Infinity" onAction="#showReclamations">
+                <graphic><Region styleClass="nav-icon, icon-reclam"/></graphic>
+            </Button>
+            
+            <Button fx:id="btnPartenaires" text="Partenaires" styleClass="nav-btn" maxWidth="Infinity" onAction="#showPartenaires">
+                <graphic><Region styleClass="nav-icon, icon-parten"/></graphic>
+            </Button>
+            
+            <Button fx:id="btnUtilisateurs" text="Utilisateurs" styleClass="nav-btn" maxWidth="Infinity" onAction="#showUtilisateurs">
+                <graphic><Region styleClass="nav-icon, icon-utilisat"/></graphic>
+            </Button>
+            
+            <Button fx:id="btnStatistiques" text="Statistiques" styleClass="nav-btn" maxWidth="Infinity" onAction="#showStatistiques">
+                <graphic><Region styleClass="nav-icon, icon-stats"/></graphic>
+            </Button>
+            
+            <Button fx:id="btnConfiguration" text="Configuration" styleClass="nav-btn" maxWidth="Infinity">
+                <graphic><Region styleClass="nav-icon, icon-config"/></graphic>
+            </Button>
+
+            <!-- Spacer -->
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- Footer Utilisateur Connecté -->
+            <Separator styleClass="sidebar-separator"/>
+            <HBox styleClass="sidebar-user-area" alignment="CENTER_LEFT" spacing="12" onMouseClicked="#showLogoutMenu" style="-fx-cursor: hand;">
+                <StackPane>
+                    <Circle radius="18" fill="#e2e8f0"/>
+                    <Label text="A" style="-fx-text-fill: #0f172a; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+                </StackPane>
+                <VBox spacing="2" alignment="CENTER_LEFT">
+                    <Label text="John Doe" styleClass="user-name"/>
+                    <HBox alignment="CENTER_LEFT" spacing="5">
+                        <Circle radius="4" fill="#10b981"/>
+                        <Label text="Administrateur" styleClass="user-role"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+        </VBox>
+    </left>
+
+    <!-- ══════════════════════════════════════════
+         ZONE DROITE : Top Bar + Contenu
+         ══════════════════════════════════════════ -->
+    <center>
+        <BorderPane>
+
+            <!-- Top Bar / Navbar -->
+            <top>
+                <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="12">
+                    <Button text="≡" styleClass="hamburger-btn"/>
+                    
+                    <Region HBox.hgrow="ALWAYS"/>
+                    
+                    <!-- Search Bar Toggleable -->
+                    <HBox fx:id="searchBox" alignment="CENTER_LEFT" spacing="0" visible="false" managed="false" style="-fx-padding: 0 10 0 0;">
+                        <TextField promptText="Rechercher..." styleClass="navbar-search-field" prefWidth="250" />
+                    </HBox>
+                    <Button styleClass="icon-btn" onAction="#toggleSearchBar">
+                        <graphic><Region styleClass="top-icon, icon-search"/></graphic>
+                    </Button>
+                    <Button styleClass="icon-btn" onAction="#toggleFullScreen">
+                        <graphic><Region styleClass="top-icon, icon-fullscreen"/></graphic>
+                    </Button>
+                    <Button styleClass="icon-btn" onAction="#toggleTheme">
+                        <graphic><Region styleClass="top-icon, icon-theme"/></graphic>
+                    </Button>
+                    
+                    <StackPane style="-fx-padding: 0 4;">
+                        <Button styleClass="icon-btn" onMouseClicked="#showNotificationsMenu">
+                            <graphic><Region styleClass="top-icon, icon-bell"/></graphic>
+                        </Button>
+                        <Label text="3" styleClass="notification-badge" StackPane.alignment="TOP_RIGHT" mouseTransparent="true"/>
+                    </StackPane>
+                    
+                    <MenuButton styleClass="top-menu-btn">
+                        <graphic><Region styleClass="top-icon, icon-user"/></graphic>
+                        <items>
+                            <MenuItem text="Mon Profil" styleClass="top-menu-item"/>
+                            <MenuItem text="Se déconnecter" styleClass="top-menu-item"/>
+                        </items>
+                    </MenuButton>
+                </HBox>
+            </top>
+
+            <!-- Contenu dynamique (Vide par défaut) -->
+            <center>
+                <StackPane fx:id="contentPane" styleClass="content-area"/>
+            </center>
+
+        </BorderPane>
+    </center>
+
+</BorderPane>

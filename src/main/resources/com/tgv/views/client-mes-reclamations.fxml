@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="25"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tgv.controllers.ClientMesReclamationsController"
+      style="-fx-background-color: transparent; -fx-padding: 40;">
+
+    <HBox alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-background-radius: 16px; -fx-padding: 20 30; -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.08), 15, 0, 0, 5);">
+        <VBox>
+            <Label text="L'historique de vos réclamations" style="-fx-font-size: 26px; -fx-font-weight: 900; -fx-text-fill: #1e293b;"/>
+            <Label text="Suivez l'état, filtrez et gérez toutes vos demandes envoyées." style="-fx-text-fill: #64748b; -fx-font-size: 14px;"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="← Retour à l'accueil" onAction="#handleRetour" style="-fx-background-color: #f1f5f9; -fx-text-fill: #475569; -fx-font-weight: bold; -fx-background-radius: 10px; -fx-padding: 10 20; -fx-cursor: hand; -fx-font-size: 14px;"/>
+    </HBox>
+
+    <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 15 20; -fx-background-radius: 12px; -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.06), 10, 0, 0, 4);">
+        <TextField fx:id="searchField" promptText="🔍 Que recherchez-vous ?" prefWidth="280" style="-fx-padding: 10 15; -fx-font-size: 14px; -fx-background-radius: 8px; -fx-border-color: #e2e8f0; -fx-border-radius: 8px; -fx-background-color: #f8fafc;"/>
+        <Label text="Statut :" style="-fx-font-weight: bold; -fx-text-fill: #475569; -fx-font-size: 14px;"/>
+        <ComboBox fx:id="filterStatut" prefWidth="140" style="-fx-padding: 6; -fx-font-size: 14px; -fx-background-radius: 8px; -fx-border-color: #e2e8f0; -fx-border-radius: 8px; -fx-background-color: #f8fafc;"/>
+        <Label text="Catégorie :" style="-fx-font-weight: bold; -fx-text-fill: #475569; -fx-font-size: 14px;"/>
+        <ComboBox fx:id="filterService" prefWidth="140" style="-fx-padding: 6; -fx-font-size: 14px; -fx-background-radius: 8px; -fx-border-color: #e2e8f0; -fx-border-radius: 8px; -fx-background-color: #f8fafc;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Réinitialiser les filtres" onAction="#resetFiltre" style="-fx-background-color: transparent; -fx-text-fill: #ef4444; -fx-font-weight: bold; -fx-cursor: hand; -fx-font-size: 13px; -fx-padding: 8 15; -fx-border-color: #fecaca; -fx-border-radius: 8px;"/>
+    </HBox>
+
+    <VBox VBox.vgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 16px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 20, 0, 0, 8); -fx-padding: 5;">
+        <TableView fx:id="reclamationsTable" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-border-width: 0;">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="60" style="-fx-alignment: CENTER; -fx-padding: 10 0;"/>
+                <TableColumn fx:id="colSujet" text="Sujet de la demande" prefWidth="200" style="-fx-alignment: CENTER_LEFT; -fx-font-weight: bold; -fx-text-fill: #0f172a;"/>
+                <TableColumn fx:id="colMessage" text="Message / Détails" prefWidth="300" style="-fx-alignment: CENTER_LEFT; -fx-text-fill: #64748b;"/>
+                <TableColumn fx:id="colStatut" text="Statut actuel" prefWidth="130" style="-fx-alignment: CENTER;"/>
+                <TableColumn fx:id="colDate" text="Traité le" prefWidth="150" style="-fx-alignment: CENTER;"/>
+                <TableColumn fx:id="colService" text="Service visé" prefWidth="130" style="-fx-alignment: CENTER;"/>
+                <TableColumn fx:id="colTelephone" text="Téléphone" prefWidth="120" style="-fx-alignment: CENTER;"/>
+                <TableColumn fx:id="colRepondu" text="Action requise ?" prefWidth="120" style="-fx-alignment: CENTER;"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <HBox spacing="20" alignment="CENTER_RIGHT" style="-fx-padding: 5 0 0 0;">
+        <Button text="🗑️  Supprimer la demande" onAction="#handleSupprimer" style="-fx-background-color: white; -fx-text-fill: #dc2626; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 10px; -fx-padding: 12 25; -fx-border-color: #fca5a5; -fx-border-radius: 10px; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);"/>
+        <Button text="✏️  Modifier la demande" onAction="#handleModifier" style="-fx-background-color: linear-gradient(to right, #0284c7, #0ea5e9); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 10px; -fx-padding: 12 25; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(2,132,199,0.3), 8, 0, 0, 4);"/>
+    </HBox>
+
+</VBox>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10"
+      alignment="CENTER"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tgv.controllers.ReclamationController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Ajouter une Réclamation"/>
+
+    <TextField fx:id="sujetField" promptText="Sujet"/>
+    <TextArea fx:id="messageArea" promptText="Message"/>
+    <TextField fx:id="telField" promptText="Téléphone"/>
+
+    <ComboBox fx:id="serviceComboBox" promptText="Choisir le type de service"/>
+
+    <Button text="Ajouter" onAction="#ajouterReclamation"/>
+    <Button text="Retour" onAction="#retour"/>
+
+</VBox>

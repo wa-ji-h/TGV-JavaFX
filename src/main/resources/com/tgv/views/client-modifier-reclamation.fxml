@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tgv.controllers.ClientModifierReclamationController"
+      style="-fx-background-color: transparent; -fx-padding: 30;">
+
+    <VBox spacing="20" maxWidth="600" style="-fx-background-color: white; -fx-background-radius: 12px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 15, 0, 0, 5); -fx-padding: 40;">
+        <Label text="Modifier la Réclamation" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1e293b;"/>
+        <Label text="Mettez à jour les détails de votre demande en attente." style="-fx-text-fill: #64748b; -fx-font-size: 14px;"/>
+
+        <Label fx:id="errorLabel" visible="false" wrapText="true" style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-color: #fee2e2; -fx-border-color: #f87171; -fx-border-radius: 6px; -fx-background-radius: 6px;"/>
+
+        <VBox spacing="8">
+            <Label text="Sujet (Lettres uniquement)" style="-fx-font-weight: bold; -fx-text-fill: #334155;"/>
+            <TextField fx:id="sujetField" promptText="Ex: Problème technique..." style="-fx-padding: 10; -fx-background-radius: 8px; -fx-border-color: #cbd5e1; -fx-border-radius: 8px;"/>
+        </VBox>
+
+        <VBox spacing="8">
+            <Label text="Message (Min. 10 caractères)" style="-fx-font-weight: bold; -fx-text-fill: #334155;"/>
+            <TextArea fx:id="messageArea" promptText="Décrivez votre problème en détail..." prefRowCount="5" style="-fx-padding: 10; -fx-background-radius: 8px; -fx-border-color: #cbd5e1; -fx-border-radius: 8px;"/>
+        </VBox>
+
+        <HBox spacing="20">
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Téléphone (Chiffres uniquement)" style="-fx-font-weight: bold; -fx-text-fill: #334155;"/>
+                <TextField fx:id="phoneField" promptText="Ex: 0612345678" style="-fx-padding: 10; -fx-background-radius: 8px; -fx-border-color: #cbd5e1; -fx-border-radius: 8px;"/>
+            </VBox>
+
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Type de service" style="-fx-font-weight: bold; -fx-text-fill: #334155;"/>
+                <ComboBox fx:id="serviceComboBox" promptText="Sélectionner..." maxWidth="Infinity" style="-fx-padding: 5; -fx-background-radius: 8px; -fx-border-color: #cbd5e1; -fx-border-radius: 8px; -fx-background-color: #f8fafc;"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-padding: 20 0 0 0;">
+            <Button text="Annuler / Retour" onAction="#handleRetour" style="-fx-background-color: transparent; -fx-text-fill: #64748b; -fx-border-color: #cbd5e1; -fx-border-radius: 8px; -fx-padding: 10 20; -fx-cursor: hand;"/>
+            <Button fx:id="modifierButton" text="Mettre à jour" onAction="#handleModifier" style="-fx-background-color: #0284c7; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px; -fx-padding: 10 30; -fx-cursor: hand;"/>
+        </HBox>
+    </VBox>
+
+</VBox>

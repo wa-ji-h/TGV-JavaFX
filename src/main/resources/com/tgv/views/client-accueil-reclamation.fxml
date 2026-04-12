@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<!-- Premium Design using inline styles and styleClasses for Accueil -->
+<VBox spacing="40" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tgv.controllers.ClientAccueilReclamationController"
+      style="-fx-background-color: transparent; -fx-padding: 50;">
+
+    <Label text="Centre de Support Client" style="-fx-font-size: 42px; -fx-font-weight: 900; -fx-text-fill: #1e293b; -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 6);"/>
+    <Label text="Comment pouvons-nous vous aider aujourd'hui ?" style="-fx-font-size: 18px; -fx-text-fill: #475569; -fx-font-weight: 500;"/>
+    
+    <HBox spacing="60" alignment="CENTER" style="-fx-padding: 30 0 0 0;">
+        <!-- Card 1: Ajouter -->
+        <VBox spacing="25" alignment="CENTER" onMouseClicked="#goToAdd"
+              style="-fx-background-color: linear-gradient(to bottom right, #ffffff, #f1f5f9); -fx-background-radius: 24; -fx-border-radius: 24; -fx-border-color: rgba(255,255,255,0.6); -fx-border-width: 2; -fx-padding: 50; -fx-effect: dropshadow(three-pass-box, rgba(37,99,235,0.15), 30, 0.1, 0, 15); -fx-cursor: hand;"
+              minWidth="340" minHeight="380">
+            <StackPane style="-fx-background-color: #eff6ff; -fx-background-radius: 50%; -fx-min-width: 100px; -fx-min-height: 100px; -fx-max-width: 100px; -fx-max-height: 100px;">
+                <Label text="📝" style="-fx-font-size: 50px;"/>
+            </StackPane>
+            <Label text="Ajouter une réclamation" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0f172a;"/>
+            <Label text="Signalez un problème ou une &#10;requête auprès de nos services." textAlignment="CENTER" style="-fx-font-size: 15px; -fx-text-fill: #64748b; -fx-line-spacing: 4px;"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Créer une nouvelle demande →" onAction="#goToAdd" style="-fx-background-color: linear-gradient(to right, #3b82f6, #2563eb); -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 12px; -fx-padding: 14 30; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.4), 10, 0, 0, 5);"/>
+        </VBox>
+
+        <!-- Card 2: Mes Reclamations -->
+        <VBox spacing="25" alignment="CENTER" onMouseClicked="#goToMesReclamations"
+              style="-fx-background-color: linear-gradient(to bottom right, #ffffff, #f1f5f9); -fx-background-radius: 24; -fx-border-radius: 24; -fx-border-color: rgba(255,255,255,0.6); -fx-border-width: 2; -fx-padding: 50; -fx-effect: dropshadow(three-pass-box, rgba(16,185,129,0.15), 30, 0.1, 0, 15); -fx-cursor: hand;"
+              minWidth="340" minHeight="380">
+            <StackPane style="-fx-background-color: #ecfdf5; -fx-background-radius: 50%; -fx-min-width: 100px; -fx-min-height: 100px; -fx-max-width: 100px; -fx-max-height: 100px;">
+                <Label text="🗂️" style="-fx-font-size: 50px;"/>
+            </StackPane>
+            <Label text="Mes réclamations" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0f172a;"/>
+            <Label text="Consultez et suivez l'état &#10;de vos réclamations existantes." textAlignment="CENTER" style="-fx-font-size: 15px; -fx-text-fill: #64748b; -fx-line-spacing: 4px;"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Consulter le suivi →" onAction="#goToMesReclamations" style="-fx-background-color: linear-gradient(to right, #10b981, #059669); -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 12px; -fx-padding: 14 30; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(16,185,129,0.4), 10, 0, 0, 5);"/>
+        </VBox>
+    </HBox>
+</VBox>

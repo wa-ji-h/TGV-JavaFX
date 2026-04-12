@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Import des layouts JavaFX -->
+<?import javafx.scene.layout.*?>
+
+<!-- Import des composants UI (Label, Button, TextField...) -->
+<?import javafx.scene.control.*?>
+
+<!-- Import pour gérer padding / marges -->
+<?import javafx.geometry.Insets?>
+
+<!--
+VBox principale :
+- Conteneur global de la page
+- centre le formulaire
+- ajoute padding autour
+- controller lié à cette vue
+-->
+<VBox spacing="0" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tgv.controllers.ClientAjouterReclamationController"
+      style="-fx-background-color: transparent; -fx-padding: 20;">
+
+    <!--
+    Carte principale du formulaire
+    - background blanc
+    - coins arrondis
+    - ombre (dropshadow)
+    - largeur max 700px
+    -->
+    <VBox spacing="0" maxWidth="700"
+          style="-fx-background-color: #ffffff;
+                 -fx-background-radius: 24px;
+                 -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 40, 0, 0, 15);">
+
+        <!--
+        HEADER PREMIUM
+        - gradient violet
+        - coins arrondis en haut
+        - padding interne
+        -->
+        <VBox alignment="CENTER_LEFT" spacing="10"
+              style="-fx-background-color: linear-gradient(to right bottom, #4f46e5, #9333ea);
+                     -fx-background-radius: 24px 24px 0 0;
+                     -fx-padding: 40 50;">
+
+            <!-- Titre principal -->
+            <Label text="Signaler un problème"
+                   style="-fx-font-size: 32px;
+                          -fx-font-weight: 900;
+                          -fx-text-fill: white;"/>
+
+            <!-- Sous titre -->
+            <Label text="Notre équipe de support client s'engage à vous répondre dans les plus brefs délais."
+                   style="-fx-text-fill: #e0e7ff;
+                          -fx-font-size: 15px;
+                          -fx-opacity: 0.95;"/>
+        </VBox>
+
+        <!--
+        CORPS DU FORMULAIRE
+        - padding interne
+        - espacement vertical
+        -->
+        <VBox spacing="30" style="-fx-padding: 40 50;">
+
+            <!--
+            LABEL D'ERREUR
+            fx:id utilisé dans controller pour afficher validation
+            visible=false par défaut
+            -->
+            <Label fx:id="errorLabel"
+                   visible="false"
+                   managed="false"
+                   wrapText="true"
+                   style="-fx-font-size: 14px;
+                          -fx-padding: 16;
+                          -fx-background-color: #fef2f2;
+                          -fx-border-color: #fca5a5;
+                          -fx-border-width: 1px;
+                          -fx-border-radius: 12px;
+                          -fx-background-radius: 12px;
+                          -fx-text-fill: #dc2626;
+                          -fx-font-weight: bold;"/>
+
+            <!--
+            LIGNE SUJET
+            VBox = label + champ texte
+            -->
+            <VBox spacing="12">
+
+                <!-- label sujet -->
+                <Label text="Sujet de la demande"
+                       style="-fx-font-weight: 800;
+                              -fx-font-size: 14px;
+                              -fx-text-fill: #475569;"/>
+
+                <!-- champ sujet -->
+                <TextField fx:id="sujetField"
+                           promptText="Ex: Problème d'expédition ou retard (Lettres uniquement)"
+                           style="-fx-padding: 16 20;
+                                  -fx-background-radius: 12px;
+                                  -fx-border-color: #e2e8f0;
+                                  -fx-border-radius: 12px;
+                                  -fx-font-size: 15px;
+                                  -fx-background-color: #f8fafc;
+                                  -fx-text-fill: #1e293b;"/>
+            </VBox>
+
+            <!--
+            LIGNE DOUBLE
+            Téléphone + Type service
+            HBox = disposition horizontale
+            -->
+            <HBox spacing="30">
+
+                <!-- TELEPHONE -->
+                <VBox spacing="12" HBox.hgrow="ALWAYS">
+
+                    <Label text="Numéro de contact"
+                           style="-fx-font-weight: 800;
+                                  -fx-font-size: 14px;
+                                  -fx-text-fill: #475569;"/>
+
+                    <TextField fx:id="phoneField"
+                               promptText="+216 XX XX XX XX"
+                               style="-fx-padding: 16 20;
+                                      -fx-background-radius: 12px;
+                                      -fx-border-color: #e2e8f0;
+                                      -fx-border-radius: 12px;
+                                      -fx-font-size: 15px;
+                                      -fx-background-color: #f8fafc;
+                                      -fx-text-fill: #1e293b;"/>
+                </VBox>
+
+                <!-- TYPE SERVICE -->
+                <VBox spacing="12" HBox.hgrow="ALWAYS">
+
+                    <Label text="Catégorie de service"
+                           style="-fx-font-weight: 800;
+                                  -fx-font-size: 14px;
+                                  -fx-text-fill: #475569;"/>
+
+                    <ComboBox fx:id="serviceComboBox"
+                              promptText="Sélectionnez..."
+                              maxWidth="Infinity"
+                              style="-fx-padding: 11 16;
+                                     -fx-background-radius: 12px;
+                                     -fx-border-color: #e2e8f0;
+                                     -fx-border-radius: 12px;
+                                     -fx-font-size: 15px;
+                                     -fx-background-color: #f8fafc;"/>
+                </VBox>
+            </HBox>
+
+            <!--
+            MESSAGE
+            zone description longue
+            -->
+            <VBox spacing="12">
+
+                <Label text="Description de la réclamation"
+                       style="-fx-font-weight: 800;
+                              -fx-font-size: 14px;
+                              -fx-text-fill: #475569;"/>
+
+                <TextArea fx:id="messageArea"
+                          promptText="Fournissez le maximum de détails pour que nous puissions cibler le problème..."
+                          prefRowCount="6"
+                          style="-fx-padding: 12;
+                                 -fx-background-radius: 12px;
+                                 -fx-border-color: #e2e8f0;
+                                 -fx-border-radius: 12px;
+                                 -fx-font-size: 15px;
+                                 -fx-background-color: #f8fafc;
+                                 -fx-text-fill: #1e293b;"/>
+            </VBox>
+
+            <!--
+            BOUTONS ACTIONS
+            alignés à droite
+            -->
+            <HBox spacing="20"
+                  alignment="CENTER_RIGHT"
+                  style="-fx-padding: 20 0 0 0;">
+
+                <!-- bouton retour -->
+                <Button text="Retour"
+                        onAction="#handleRetour"
+                        style="-fx-background-color: transparent;
+                               -fx-text-fill: #64748b;
+                               -fx-font-weight: bold;
+                               -fx-font-size: 15px;
+                               -fx-padding: 12 25;
+                               -fx-cursor: hand;
+                               -fx-border-color: transparent;"/>
+
+                <!-- bouton ajouter -->
+                <Button text="Envoyer la demande →"
+                        onAction="#handleAjouter"
+                        style="-fx-background-color: linear-gradient(to right, #4f46e5, #7c3aed);
+                               -fx-text-fill: white;
+                               -fx-font-weight: bold;
+                               -fx-font-size: 15px;
+                               -fx-background-radius: 14px;
+                               -fx-padding: 16 35;
+                               -fx-cursor: hand;
+                               -fx-effect: dropshadow(gaussian, rgba(124,58,237,0.4), 18, 0, 0, 6);"/>
+            </HBox>
+
+        </VBox>
+    </VBox>
+
+</VBox>

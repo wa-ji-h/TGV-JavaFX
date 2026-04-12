@@ -89,7 +89,7 @@ public class MainController implements Initializable {
     }
 
     @FXML public void showReclamations() {
-        loadView("reclamations.fxml", "Réclamations");
+        loadView("reclamations.fxml", "Gestion des Réclamations");
         setActive(btnReclamations);
     }
 

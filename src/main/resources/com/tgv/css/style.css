@@ -541,6 +541,59 @@
     -fx-text-fill: #a7f3d0;
 }
 
+/* Custom MenuButton for Services */
+.front-services-menu {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 8 12;
+}
+.front-services-menu > .label {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+.front-services-menu:hover > .label, .front-services-menu:showing > .label {
+    -fx-text-fill: #a7f3d0;
+    -fx-effect: dropshadow(gaussian, rgba(167, 243, 208, 0.5), 10, 0, 0, 0);
+}
+.front-services-menu > .arrow-button {
+    -fx-padding: 0 4 0 6;
+}
+.front-services-menu > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+.front-services-menu:hover > .arrow-button > .arrow, .front-services-menu:showing > .arrow-button > .arrow {
+    -fx-background-color: #a7f3d0;
+}
+
+/* Custom premium popup context menu for front */
+.front-services-menu .context-menu {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-border-color: rgba(0,0,0,0.08);
+    -fx-padding: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0.2, 0, 8);
+}
+
+.front-sub-menu-item {
+    -fx-padding: 8 20;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+.front-sub-menu-item > .label {
+    -fx-text-fill: #1e293b;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+.front-sub-menu-item:hover {
+    -fx-background-color: linear-gradient(to right, #eff6ff, #f8fafc);
+}
+.front-sub-menu-item:hover > .label {
+    -fx-text-fill: #2563eb;
+}
+
 .front-cart-btn {
     -fx-background-color: rgba(255, 255, 255, 0.2);
     -fx-background-radius: 50%;
